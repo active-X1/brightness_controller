@@ -19,8 +19,7 @@ A lightweight Python desktop app for controlling screen brightness through a mod
 
 1. Clone the repository:
    ```bash
-   git clone <repo-url>
-   cd Advance
+   git clone https://github.com/active-x1/brightness_controller.git
    ```
 2. Install dependencies:
    ```bash
@@ -29,10 +28,10 @@ A lightweight Python desktop app for controlling screen brightness through a mod
 
 ## Usage
 
-Run the app from the `Brightness` folder:
+Run the app from your `path` folder:
 
 ```bash
-python Brightness/brightness.py
+python brightness.py
 ```
 
 ## Notes
