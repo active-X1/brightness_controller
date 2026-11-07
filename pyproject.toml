@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brightness-controller"
+dynamic = ["version"]
+description = "A lightweight desktop utility for controlling screen brightness."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Cyrus Akacha Cyprian" }]
+keywords = ["brightness", "screen", "display", "monitor", "customtkinter", "desktop"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: X11 Applications",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Desktop Environment",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+dependencies = [
+    "customtkinter>=5.2",
+    "screen-brightness-control>=0.20",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.10"]
+
+[project.urls]
+Repository = "https://github.com/active-x1/brightness_controller"
+
+# gui-scripts: on Windows this creates a launcher that doesn't open a console window.
+[project.gui-scripts]
+brightness-controller = "brightness_controller.main:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "brightness_controller.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+brightness_controller = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "C4", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src/brightness_controller/core"]
